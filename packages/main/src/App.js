@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { TextInput } from 'weather';
+import { typedAdd } from 'calculator';
 import logo from './logo.svg';
 import './App.css';
 
@@ -19,6 +21,8 @@ class App extends Component {
           >
             Learn React
           </a>
+          <p>2 + 2 = {typedAdd(2, 2)}</p>
+          <TextInput label="whatever" />
         </header>
       </div>
     );
