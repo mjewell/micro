@@ -1,0 +1,6 @@
+{
+  "extends": "./.babelrc",
+  "ignore": ["**/__tests__/**/*"],
+  "sourceMaps": "inline",
+  "sourceRoot": "whatever"
+}
