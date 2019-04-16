@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "calculator": "^0.1.0",
     "mobx": "^5.9.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8",
-    "weather": "^0.1.0"
+    "login": "^0.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
