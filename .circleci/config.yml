@@ -2,9 +2,16 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
+version: 2.1
 jobs:
   build:
+    parameters:
+      login-has-changes:
+        type: string
+        default: ''
+      main-has-changes:
+        type: string
+        default: ''
     docker:
       # specify the version you desire here
       - image: circleci/node:9.11
@@ -32,8 +39,23 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-            - packages/*/node_modules
+            - packages/login/node_modules
+            - packages/main/node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
-      - run: yarn test
+      - when:
+          condition: << parameters.login-has-changes >>
+          steps:
+            - run: cd packages/login && yarn test
+
+      - when:
+          condition: << parameters.main-has-changes >>
+          steps:
+            - run: cd packages/main && yarn test
+
+workflows:
+  build-test-deploy:
+    jobs:
+      - build:
+          login-has-changes: $(git log master..test --format=format:%H --full-diff packages/login)
+          main-has-changes: $(git log master..test --format=format:%H --full-diff packages/main)
