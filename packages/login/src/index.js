@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { TextInput } from './lib';
+import { LogIn, LogOut } from './lib';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<TextInput label="Name" />, document.getElementById('root'));
+ReactDOM.render(
+  <div>
+    <LogIn onLogIn={console.log} />
+    <LogOut onLogOut={console.log} />
+  </div>,
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
