@@ -8,6 +8,7 @@
     "lerna": "^3.13.1"
   },
   "scripts": {
-    "start": "lerna run --parallel start:lerna"
+    "start": "lerna run --parallel start:lerna",
+    "test": "lerna run --parallel test"
   }
 }
